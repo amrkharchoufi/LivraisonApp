@@ -32,4 +32,7 @@ public class Commande {
     @Transient
     private Client client;
 
+    @Transient
+    private  Livreur livreur;
+
 }

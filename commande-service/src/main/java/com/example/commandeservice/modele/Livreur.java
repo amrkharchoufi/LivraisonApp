@@ -1,22 +1,20 @@
-package com.example.clientservice.modele;
+package com.example.commandeservice.modele;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Document(collection = "Clients")
-public class Client {
-    @Id
-    private String idClient;
+public class Livreur {
+    private String idLivreur;
     private String Nom;
-    private String Ville;
     private double longtitude;
     private double latitude;
-    private String adress;
     private String telephone;
-
 }
