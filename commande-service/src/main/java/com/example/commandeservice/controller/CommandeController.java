@@ -1,12 +1,10 @@
 package com.example.commandeservice.controller;
 
+import com.example.commandeservice.entite.Commande;
 import com.example.commandeservice.modele.*;
 import com.example.commandeservice.repository.CommandeRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -52,5 +50,27 @@ public class CommandeController {
         List<Commande> cmd = commandeRepository.findAll().stream().filter(ps).toList();
 
         return getCommandes(cmd);
+    }
+
+    @PostMapping("/commandes")
+    public void createCommande(@RequestBody Commande c){
+        commandeRepository.save(c);
+    }
+
+    @DeleteMapping("/commandes/{id}")
+    public void deleteCommande(@PathVariable(name = "id") String code){
+        commandeRepository.deleteById(code);
+    }
+    @PutMapping("/commandes/{id}")
+    public void updateCommande(@PathVariable(name = "id") String code,@RequestBody Commande c){
+        Commande cmd1= commandeRepository.findById(code).get();
+        cmd1.setIdClient(c.getIdClient());
+        cmd1.setIdLivreur(c.getIdLivreur());
+        cmd1.setLivreur(c.getLivreur());
+        cmd1.setClient(c.getClient());
+        cmd1.setItems(c.getItems());
+        cmd1.setProducts(c.getProducts());
+        cmd1.setStatus(c.getStatus());
+        commandeRepository.save(cmd1);
     }
 }

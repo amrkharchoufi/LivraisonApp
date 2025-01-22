@@ -1,6 +1,7 @@
-package com.example.commandeservice.modele;
+package com.example.commandeservice.entite;
 
 
+import com.example.commandeservice.modele.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -33,6 +33,6 @@ public class Commande {
     private Client client;
 
     @Transient
-    private  Livreur livreur;
+    private Livreur livreur;
 
 }

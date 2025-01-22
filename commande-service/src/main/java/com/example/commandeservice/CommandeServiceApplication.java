@@ -1,18 +1,8 @@
 package com.example.commandeservice;
 
-import com.example.commandeservice.modele.Commande;
-import com.example.commandeservice.modele.CommandeStatus;
-import com.example.commandeservice.modele.Produit;
-import com.example.commandeservice.modele.commandeItem;
-import com.example.commandeservice.repository.CommandeRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
-
-import java.util.LinkedList;
-import java.util.List;
 
 @SpringBootApplication
 @EnableFeignClients
