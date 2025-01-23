@@ -51,6 +51,12 @@ public class CommandeController {
 
         return getCommandes(cmd);
     }
+    @GetMapping("/commandes/clt/{id}")
+    public List<Commande> getcmdbyClt(@PathVariable(name = "id") String id){
+        Predicate<Commande> ps = cmd -> cmd.getIdClient().equals(id);
+        List<Commande> cmd = commandeRepository.findAll().stream().filter(ps).toList();
+        return getCommandes(cmd);
+    }
 
     @PostMapping("/commandes")
     public void createCommande(@RequestBody Commande c){
