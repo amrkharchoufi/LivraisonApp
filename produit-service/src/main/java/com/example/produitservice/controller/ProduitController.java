@@ -22,8 +22,8 @@ public class ProduitController {
         return ProduitRepo.findById(code).get();
     }
     @PostMapping("/produits")
-    public void addProduit(@RequestBody Produit client){
-        ProduitRepo.save(client);
+    public void addProduit(@RequestBody Produit Produit){
+        ProduitRepo.save(Produit);
     }
     @DeleteMapping("/produits/{id}")
     public void DeleteProduit(@PathVariable(name = "id") String code){
@@ -34,6 +34,7 @@ public class ProduitController {
         Produit c1=ProduitRepo.findById(code).get();
         c1.setProductName(c.getProductName());
         c1.setPrice(c.getPrice());
+        c1.setCategorie(c.getCategorie());
         ProduitRepo.save(c1);
     }
 

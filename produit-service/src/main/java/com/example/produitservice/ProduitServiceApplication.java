@@ -13,17 +13,19 @@ public class ProduitServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProduitServiceApplication.class, args);
     }
-   /*
+
     @Bean
     CommandLineRunner start(ProduitRepository prrepo){
         return args -> {
-            Produit p1 = Produit.builder().ProductName("asus").Price(140000.0).idProduit("ABC").build();
-            Produit p2 = Produit.builder().ProductName("brownies").Price(150.0).idProduit("CDF").build();
-            Produit p3 = Produit.builder().ProductName("Iphone 16").Price(20000.0).idProduit("EFG").build();
+            Produit p1 = Produit.builder().ProductName("Pizza Pepperoni").Price(23.0).idProduit("pizzapep").Categorie("Pizza").build();
+            Produit p2 = Produit.builder().ProductName("Tacos").Price(50.0).idProduit("tacos").Categorie("Tacos").build();
+            Produit p3 = Produit.builder().ProductName("Cheese Burger").Price(35.0).idProduit("chbur").Categorie("Burger").build();
+            Produit p4 = Produit.builder().ProductName("Nugget 6pc").Price(40.0).idProduit("ng6").Categorie("Nugget").build();
             prrepo.save(p1);
             prrepo.save(p2);
             prrepo.save(p3);
+            prrepo.save(p4);
         };
-    }*/
+    }
 
 }
