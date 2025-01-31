@@ -1,10 +1,12 @@
 package com.example.commandeservice.controller;
 
 import com.example.commandeservice.entite.Commande;
+import com.example.commandeservice.helper.DistanceCalculator;
 import com.example.commandeservice.modele.*;
 import com.example.commandeservice.repository.CommandeRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -60,6 +62,24 @@ public class CommandeController {
 
     @PostMapping("/commandes")
     public void createCommande(@RequestBody Commande c){
+        List<Livreur> livreurs = livreurOpenFeign.findAll();
+        Client clt = clientOpenFeign.findById(c.getIdClient());
+
+        if(livreurs.isEmpty()) {
+            throw new RuntimeException("No available delivery persons");
+        }
+        // Find nearest livreur
+        Livreur nearest = livreurs.stream()
+                .min(Comparator.comparingDouble(l ->
+                        DistanceCalculator.calculateDistance(
+                                clt.getLatitude(),
+                                clt.getLongtitude(),
+                                l.getLatitude(),
+                                l.getLongtitude()
+                        )))
+                .orElseThrow();
+
+        c.setIdLivreur(nearest.getIdLivreur());
         commandeRepository.save(c);
     }
 

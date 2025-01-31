@@ -40,4 +40,17 @@ public class LivreurController {
         c1.setLongtitude(c.getLongtitude());
         livreurRepository.save(c1);
     }
+
+    // In LivreurController.java
+    @PutMapping("/livreurs/{id}/location")
+    public void updateLocation(
+            @PathVariable String id,
+            @RequestParam double latitude,
+            @RequestParam double longitude) {
+
+        Livreur livreur = livreurRepository.findById(id).orElseThrow();
+        livreur.setLatitude(latitude);
+        livreur.setLongtitude(longitude);
+        livreurRepository.save(livreur);
+    }
 }

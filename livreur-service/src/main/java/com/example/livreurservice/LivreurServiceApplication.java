@@ -13,13 +13,14 @@ public class LivreurServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(LivreurServiceApplication.class, args);
     }
-    /*
+     /*
     @Bean
     CommandLineRunner start(LivreurRepository r){
         return  args -> {
-            Livreur l = Livreur.builder().idLivreur("AGF").Nom("ayoub").telephone("0657463728").build();
+            Livreur l = Livreur.builder().idLivreur("AGF").Nom("ayoub").telephone("0657463728").latitude(25).longtitude(100).build();
+            Livreur l1 = Livreur.builder().idLivreur("ANM").Nom("Mouad").telephone("0657463728").latitude(-35).longtitude(45).build();
             r.save(l);
+            r.save(l1);
         };
-    }
-   */
+    }*/
 }

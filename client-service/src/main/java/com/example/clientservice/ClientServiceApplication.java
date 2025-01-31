@@ -13,11 +13,11 @@ public class ClientServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ClientServiceApplication.class, args);
     }
-    /*
+   /*
     @Bean
     CommandLineRunner start(ClientRepository Clientrepo){
         return args -> {
-            Client c = Client.builder().Nom("Amr").Ville("temara").idClient("AD314145").telephone("060059522307").build();
+            Client c = Client.builder().Nom("Amr").Ville("temara").idClient("AD314145").latitude(14).longtitude(15).telephone("060059522307").build();
             Client c1 = Client.builder().Nom("Wiame").Ville("sale").idClient("AAAAAA").build();
             Client c2 = Client.builder().Nom("Ghayt").Ville("rabat").idClient("BBBBBB").build();
             Client c3 = Client.builder().Nom("Nayla").Ville("casa").idClient("CCCCCC").build();
@@ -27,7 +27,6 @@ public class ClientServiceApplication {
             Clientrepo.save(c3);
         };
     }
+
     */
-
-
 }

@@ -20,7 +20,7 @@ public class CommandeServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(CommandeServiceApplication.class, args);
     }
-
+   /*
     @Bean
     CommandLineRunner start(CommandeRepository cmd){
         return args -> {
@@ -33,4 +33,6 @@ public class CommandeServiceApplication {
             cmd.save(cmd1);
         };
     }
+
+    */
 }

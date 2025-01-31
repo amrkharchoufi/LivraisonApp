@@ -13,7 +13,7 @@ public class ProduitServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProduitServiceApplication.class, args);
     }
-
+    /*
     @Bean
     CommandLineRunner start(ProduitRepository prrepo){
         return args -> {
@@ -27,5 +27,5 @@ public class ProduitServiceApplication {
             prrepo.save(p4);
         };
     }
-
+   */
 }
