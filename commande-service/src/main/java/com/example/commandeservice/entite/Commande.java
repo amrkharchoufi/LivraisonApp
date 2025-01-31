@@ -2,6 +2,7 @@ package com.example.commandeservice.entite;
 
 
 import com.example.commandeservice.modele.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +22,8 @@ import java.util.List;
 public class Commande {
     @Id
     private String idCmd;
-    private List<commandeItem> Items;
+    @JsonProperty("items")
+    private List<commandeItem> items;
     private String idClient;
     private String idLivreur;
     private CommandeStatus status=CommandeStatus.PENDING;

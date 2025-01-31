@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class commandeItem {
     private String idProduit;
-    private int  Quantity;
+    private int  quantity;
 }
