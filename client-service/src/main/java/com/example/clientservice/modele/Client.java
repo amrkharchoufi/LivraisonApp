@@ -14,8 +14,8 @@ public class Client {
     private String idClient;
     private String nom;
     private String ville;
-    private double longtitude;
-    private double latitude;
+    private Double longtitude;
+    private Double latitude;
     private String adress;
     private String telephone;
 

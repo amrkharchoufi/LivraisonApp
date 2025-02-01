@@ -11,16 +11,6 @@
         <module name="discovery" />
         <module name="DeliveryTracking" />
       </profile>
-      <profile name="Annotation profile for produit-service" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
-        </processorPath>
-        <module name="produit-service" />
-        <module name="client-service" />
-      </profile>
       <profile name="Annotation profile for livreur-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -31,6 +21,16 @@
         </processorPath>
         <module name="livreur-service" />
         <module name="commande-service" />
+      </profile>
+      <profile name="Annotation profile for client-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="client-service" />
+        <module name="produit-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
