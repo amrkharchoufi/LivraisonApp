@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Livreur {
     @Id
     private String idLivreur;
-    private String Nom;
+    private String nom;
     private double longtitude;
     private double latitude;
     private String telephone;

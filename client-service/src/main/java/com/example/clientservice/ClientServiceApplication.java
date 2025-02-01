@@ -17,10 +17,10 @@ public class ClientServiceApplication {
     @Bean
     CommandLineRunner start(ClientRepository Clientrepo){
         return args -> {
-            Client c = Client.builder().Nom("Amr").Ville("temara").idClient("AD314145").latitude(14).longtitude(15).telephone("060059522307").build();
-            Client c1 = Client.builder().Nom("Wiame").Ville("sale").idClient("AAAAAA").build();
-            Client c2 = Client.builder().Nom("Ghayt").Ville("rabat").idClient("BBBBBB").build();
-            Client c3 = Client.builder().Nom("Nayla").Ville("casa").idClient("CCCCCC").build();
+            Client c = Client.builder().nom("Amr").ville("temara").idClient("AD314145").latitude(14).longtitude(15).telephone("060059522307").build();
+            Client c1 = Client.builder().nom("Wiame").ville("sale").idClient("AAAAAA").build();
+            Client c2 = Client.builder().nom("Ghayt").ville("rabat").idClient("BBBBBB").build();
+            Client c3 = Client.builder().nom("Nayla").ville("casa").idClient("CCCCCC").build();
             Clientrepo.save(c);
             Clientrepo.save(c1);
             Clientrepo.save(c2);

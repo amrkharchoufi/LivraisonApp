@@ -12,8 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Client {
     @Id
     private String idClient;
-    private String Nom;
-    private String Ville;
+    private String nom;
+    private String ville;
     private double longtitude;
     private double latitude;
     private String adress;
