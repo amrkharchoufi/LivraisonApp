@@ -13,20 +13,14 @@ public class ClientServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ClientServiceApplication.class, args);
     }
-   /*
+    /*
     @Bean
     CommandLineRunner start(ClientRepository Clientrepo){
         return args -> {
-            Client c = Client.builder().nom("Amr").ville("temara").idClient("AD314145").latitude(14).longtitude(15).telephone("060059522307").build();
-            Client c1 = Client.builder().nom("Wiame").ville("sale").idClient("AAAAAA").build();
-            Client c2 = Client.builder().nom("Ghayt").ville("rabat").idClient("BBBBBB").build();
-            Client c3 = Client.builder().nom("Nayla").ville("casa").idClient("CCCCCC").build();
+            Client c = Client.builder().nom("Amr").ville("temara").idClient("AD314145").latitude(14.0).longtitude(15.0).telephone("060059522307").build();
             Clientrepo.save(c);
-            Clientrepo.save(c1);
-            Clientrepo.save(c2);
-            Clientrepo.save(c3);
         };
     }
+*/
 
-    */
 }
