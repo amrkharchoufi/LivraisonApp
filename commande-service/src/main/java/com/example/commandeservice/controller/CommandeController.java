@@ -46,6 +46,21 @@ public class CommandeController {
         return getCommandes(cmd);
     }
 
+    @GetMapping("/commandes/{id}")
+    public Commande getcmdbyId(@PathVariable(name = "id") String code){
+        Commande c = commandeRepository.findById(code).get();
+        for(commandeItem item : c.getItems()){
+            Produit p = produitOpenFeign.findById(item.getIdProduit());
+            p.setQuantity(item.getQuantity());
+            c.getProducts().add(p);
+        }
+        Client cl = clientOpenFeign.findById(c.getIdClient());
+        c.setClient(cl);
+        Livreur l1 = livreurOpenFeign.findById(c.getIdLivreur());
+        c.setLivreur(l1);
+        return c;
+    }
+
     @GetMapping("/commandes/livr/{id}")
     public List<Commande> getcmdbyLivr(@PathVariable(name = "id") String id){
         Predicate<Commande> ps = cmd -> cmd.getIdLivreur().equals(id);
