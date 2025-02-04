@@ -1,8 +1,8 @@
 package com.example.clientservice.controller;
 
-
 import com.example.clientservice.dto.LocationUpdateDto;
-import com.example.clientservice.modele.Client;
+
+import com.example.clientservice.entite.Client;
 import com.example.clientservice.repository.ClientRepository;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.example.clientservice.modele;
+package com.example.clientservice.entite;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

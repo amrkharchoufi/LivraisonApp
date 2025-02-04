@@ -11,6 +11,15 @@
         <module name="discovery" />
         <module name="DeliveryTracking" />
       </profile>
+      <profile name="Annotation profile for produit-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="produit-service" />
+      </profile>
       <profile name="Annotation profile for livreur-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -27,13 +36,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="client-service" />
-        <module name="produit-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="client" target="21" />
       <module name="Cors" target="21" />
     </bytecodeTargetLevel>
   </component>
@@ -41,6 +51,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Cors" options="-parameters" />
       <module name="DeliveryTracking" options="-parameters" />
+      <module name="client" options="-parameters" />
       <module name="client-service" options="-parameters" />
       <module name="commande-service" options="-parameters" />
       <module name="discovery" options="-parameters" />
