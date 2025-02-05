@@ -114,4 +114,10 @@ public class CommandeController {
         cmd1.setStatus(c.getStatus());
         commandeRepository.save(cmd1);
     }
+    @PutMapping("/commandes/{id}/status")
+    public void updateCommandest(@PathVariable(name = "id") String code,@RequestBody Commande c){
+        Commande cmd1=commandeRepository.findById(code).get();
+        cmd1.setStatus(c.getStatus());
+        commandeRepository.save(cmd1);
+    }
 }
