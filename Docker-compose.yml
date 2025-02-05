@@ -1,0 +1,145 @@
+services:
+  discovery:
+    build: ./discovery
+    container_name: discovery-dock
+    ports:
+      - '8761:8761'
+    expose:
+      - '8761'
+    healthcheck:
+      test: [ "CMD","curl","-f", "http://localhost:8761/actuator/health" ]
+      interval: 10s
+      retries: 4
+
+  config-service:
+      build: ./config-service
+      container_name: config-dock
+      ports:
+        - '9999:9999'
+      expose:
+        - '9999'
+      healthcheck:
+        test: [ "CMD","curl","-f", "http://localhost:9999/actuator/health" ]
+        interval: 10s
+        retries: 4
+      environment:
+        - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+      depends_on:
+        discovery-service:
+          condition: service_healthy
+
+  client-service:
+    build: ./client-service
+    container_name: client-dock
+    ports:
+      - '9091:9091'
+    expose:
+      - '9091'
+    healthcheck:
+      test: [ "CMD","curl","-f", "http://localhost:9091/actuator/health" ]
+      interval: 10s
+      retries: 4
+    environment:
+      - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-dock:9999
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+  produit-service:
+    build: ./produit-service
+    container_name: produit-dock
+    ports:
+      - '9092:9092'
+    expose:
+      - '9092'
+    healthcheck:
+      test: [ "CMD","curl","-f", "http://localhost:9092/actuator/health" ]
+      interval: 10s
+      retries: 4
+    environment:
+      - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-dock:9999
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+  livreur-service:
+    build: ./livreur-service
+    container_name: livreur-dock
+    ports:
+      - '9093:9093'
+    expose:
+      - '9093'
+    healthcheck:
+      test: [ "CMD","curl","-f", "http://localhost:9093/actuator/health" ]
+      interval: 10s
+      retries: 4
+    environment:
+      - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-dock:9999
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+  DeliveryTracking:
+    build: ./DeliveryTracking
+    container_name: DeliveryTracking-dock
+    ports:
+      - '9094:9094'
+    expose:
+      - '9094'
+    healthcheck:
+      test: [ "CMD","curl","-f", "http://localhost:9094/actuator/health" ]
+      interval: 10s
+      retries: 4
+    environment:
+      - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-dock:9999
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+  commande-service:
+      build: ./commande-service
+      container_name: commande-dock
+      ports:
+        - '9095:9095'
+      expose:
+        - '9095'
+      healthcheck:
+        test: [ "CMD","curl","-f", "http://localhost:9095/actuator/health" ]
+        interval: 10s
+        retries: 4
+      environment:
+        - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+        - CONFIG_SERVICE_URL=http://config-dock:9999
+      depends_on:
+        config-service:
+          condition: service_healthy
+        client-service:
+          condition: service_healthy
+        livreur-service:
+          condition: service_healthy
+        produit-service:
+          condition: service_healthy
+
+  gateway-service:
+    build: ./gateway
+    container_name: gateway-dock
+    ports:
+      - '9096:9096'
+    expose:
+      - '9096'
+    healthcheck:
+      test: [ "CMD","curl","-f", "http://localhost:9096/actuator/health" ]
+      interval: 10s
+      retries: 4
+    environment:
+      - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-dock:9999
+    depends_on:
+      config-service:
+        condition: service_healthy
+      commande-service:
+        condition: service_healthy
