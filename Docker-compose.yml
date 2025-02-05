@@ -25,7 +25,7 @@ services:
       environment:
         - DISCOVERY_SERVICE_URL=http://discovery-dock:8761/eureka
       depends_on:
-        discovery-service:
+        discovery:
           condition: service_healthy
 
   client-service:
